@@ -8,10 +8,9 @@ import { ToDoComponent } from './to-do/to-do/to-do.component';
 import { HttpClientModule }   from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,10 +22,9 @@ import { MatRadioModule } from '@angular/material/radio';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

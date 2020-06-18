@@ -1,65 +1,70 @@
-<mat-card class="main-card">
+<div class="main-card">
     <div class="screens">
-        <mat-card class="main-card-screen-lists">
-            <mat-form-field class="form-create-list">
-                <mat-label></mat-label>
-                <input 
-                    matInput
-                    class="input-list"
-                    >
-            </mat-form-field>
-            <div class='btn'>
+        <div class="main-card-screen-lists">
+            <div class="form-field">
+                <div class="lists">hhh</div>
+                <form>
+                    <input 
+                        matInputd
+                        class="input-list"
+                        placeholder="New list..."
+                        >
+                </form>
                 <button class="btn-cteate">Create</button>
-            </div> 
-        </mat-card>
-
-        <mat-card class="main-card-screen-toDo">
-            <mat-form-field class="form-search">
-                <mat-label></mat-label>
-                <input 
-                    matInput
-                    class="input-search">
-            </mat-form-field>
-            <div class="checkbox">
-                <mat-radio-button 
-                    checked="true" 
-                    class="radio-button" 
-                    color="primary">
-                    All
-                </mat-radio-button>
-                <mat-radio-button 
-                    class="radio-button" 
-                    color="primary">
-                    Undone
-                </mat-radio-button>
             </div>
-            <mat-form-field class="form-add-to-do">
-                <mat-label></mat-label>
-                <input 
-                    matInput
-                    class="input-add-to-do">
-            </mat-form-field>
-
-        </mat-card>
-    </div>
-
-    <!-- <mat-card-header >
-        <div mat-card-avatar ></div>
-        <mat-card-title class="title">Angular</mat-card-title>
-    </mat-card-header>
-    <div class="container-input">
-        <mat-form-field >
-                <input required >
-        </mat-form-field>
-    <br>
-        <mat-form-field >
-                <input required>
-                <button>///</button>
-            </mat-form-field>
         </div>
-        <div>
-            <button>Log in</button>
-            <button >clic</button>
-            <button>clic1</button>
-        </div> -->
-</mat-card>
+
+        <div class="main-card-screen-toDo">
+            <div class="form-field">
+                <div class="head">
+                    <form>
+                        <input 
+                            matInput
+                            class="input-search"
+                            placeholder="Search...">
+                    </form>
+                    <div class="checkbox">
+                        <form class="form-radio-input">
+                            <label>
+                                <input 
+                                    type="radio"
+                                    class="checkbox-button"
+                                    checked="true" 
+                                    class="radio-button" 
+                                    color="primary"/>
+                                All
+                            </label>
+                            <!-- <br> -->
+                            <label>
+                                <input 
+                                    type="radio"
+                                    class="checkbox-button"    
+                                    class="radio-button" 
+                                    color="primary"/>
+                                Undone
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div [hidden]="newToDo" class="box-new-to-do"></div> -->
+                <ul>
+                    <li *ngFor="let toDo of toDos; let i=index">{{ toDo.newToDo }}
+                        <!-- <p [(ngModel)]="toDo.completed"></p>    -->
+                        <span (click)="delToDo(i)" class="delete-icon">X</span>
+                    </li>
+                </ul>
+                <div>
+                    <form (submit)="addToDo($event)">
+                        <input 
+                            matInput
+                            [(ngModel)]="newToDo"
+                            (keyup.enter)="newToDo=''"
+                            name="newToDo"
+                            placeholder="New todo"
+                            class="input-add-to-do">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

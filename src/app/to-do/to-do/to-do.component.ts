@@ -7,9 +7,29 @@ import { Component } from '@angular/core';
 })
 export class ToDoComponent {
 
-  constructor() { }
+  arrToDo: any;
+  newToDo: string;
+  toDos: any;
+  completed: boolean;
 
-  ngOnInit(): void {
+  constructor() { 
+    this.newToDo = '';
+    this.toDos = [];
   }
 
+  addToDo(event) {
+    if(this.newToDo !== '') {
+      this.arrToDo = {
+        newToDo : this.newToDo,
+        completed: false
+        }
+      this.toDos.push(this.arrToDo);
+      this.newToDo = '';
+      event.preventDefault();
+    }
+  }
+  
+  delToDo(index) {
+    this.toDos.splice(index, 1);
+  }
 }
