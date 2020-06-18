@@ -48,8 +48,8 @@
                 </div>
                 <!-- <div [hidden]="newToDo" class="box-new-to-do"></div> -->
                 <ul>
-                    <li *ngFor="let toDo of toDos; let i=index">{{ toDo.newToDo }}
-                        <!-- <p [(ngModel)]="toDo.completed"></p>    -->
+                    <li *ngFor="let toDo of toDos; let i=index" (click)="executeToDO(i)">{{ toDo.newToDo }}
+                        <!-- <span (click)="executeToDO(i)"></span> -->
                         <span (click)="delToDo(i)" class="delete-icon">X</span>
                     </li>
                 </ul>

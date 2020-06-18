@@ -28,8 +28,15 @@ export class ToDoComponent {
       event.preventDefault();
     }
   }
-  
+
   delToDo(index) {
     this.toDos.splice(index, 1);
+  }
+
+  executeToDO(index) {
+    console.log('click')
+    if(this.toDos[index].copleted) {
+      this.toDos[index].strike();
+    }
   }
 }
