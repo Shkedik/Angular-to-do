@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoComponent
+    ToDoComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,25 +7,50 @@ import { Component } from '@angular/core';
 })
 export class ToDoComponent {
 
+  item = 0;
+
   arrToDo: any;
   newToDo: string;
   toDos: any;
   completed: boolean;
 
+  newList: string;
+  listItems: any;
+  arrList: any;
+
   constructor() { 
     this.newToDo = '';
-    this.toDos = [];
+    this.toDos = [{newToDo: 'Milk', completed: false},
+                  {newToDo: 'Juice', completed: true},
+                  {newToDo: 'Bread', completed: false},
+                ];
+    this.newList = '';
+    this.listItems = [{newList: 'Shop'},
+                      {newList: 'Home Work'},
+                      {newList: 'Work'},];
+  }
+  addNewList(event) {
+    console.log('click')
+    if(this.newList !== '') {
+      this.arrList = {
+        newList: this.newList,
+      }
+      this.listItems.push(this.arrList);
+      this.newList = '';
+      // event.preventDefault();
+    }
+    console.log('newList', this.newList)
   }
 
   addToDo(event) {
     if(this.newToDo !== '') {
       this.arrToDo = {
-        newToDo : this.newToDo,
+        newToDo: this.newToDo,
         completed: false
         }
       this.toDos.push(this.arrToDo);
       this.newToDo = '';
-      event.preventDefault();
+      // event.preventDefault();
     }
   }
 
@@ -34,9 +59,11 @@ export class ToDoComponent {
   }
 
   executeToDO(index) {
-    console.log('click')
-    if(this.toDos[index].copleted) {
-      this.toDos[index].strike();
-    }
+    this.toDos[index].completed = !this.toDos[index].completed;
+  }
+
+  clickOnElement(value) {
+    this.item = value;
+    console.log('click', value)
   }
 }

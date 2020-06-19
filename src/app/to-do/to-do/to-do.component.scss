@@ -1,143 +1,164 @@
+
 .main-card {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: center;
-	font-size: 20px;
-	background-color: linen;
-}
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 20px;
+  background-color: linen;
 
-.screens {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;	
-}
-
-.main-card-screen-lists,
-.main-card-screen-toDo {
-	width: 25%;
-	height: 70%;
-	font-size: 20px;
-	margin : 5%;
-	background-color: lightsteelblue;
-}
-
-.main-card-screen-lists {
-	.form-field {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	&__screens {
 		width: 100%;
 		height: 100%;
-		
-		.lists {
-			width: 90%;
-			height: 80%;
-			margin-bottom: 95%; //
-		}
-
-		.input-list {
-			width: 90%;
-			height: 25px;
-			border-radius: 5px;
-			border: none;
-			background-color: white;
-			font-size: 18px;
-		}
-
-		.btn-cteate {
-			width: 90%;
-			border-radius: 5px;
-			border-color: lightgreen;
-			background-color: lightgreen;
-			font-size: 24px;
-			font-weight: 500;
-			margin: 5%;
-		}
+		display: flex;
+		justify-content: center;	
 	}
-}
 
-.main-card-screen-toDo {
-	.form-field {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
+	&__screen-lists,
+	&__screen-toDo {
+		width: 25%;
+		height: 70%;
+		font-size: 20px;
+		margin : 5%;
+		background-color: lightsteelblue;
+	}
 
-		.head {
-			width: 25%;
-			position: absolute;
-			top: 14%;
-			left: 55%;
-		
-			.input-search {
-				width: 90%;
+  &__screen-lists,
+  &__screen-toDo {
+    width: 25%;
+    height: 70%;
+    font-size: 20px;
+    margin : 5%;
+    background-color: lightsteelblue;
+  }
+
+  &__screen-lists {
+		.form-field {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      
+      .form-lists {
+        width: 90%;
+        // height: 80%;
+				// margin-bottom: 95%; 
+      }
+			
+			.form-create {
+				position: absolute;
+				top: 68%;
+				left: 22%;
+			}
+
+      .input-list {
+        width: 90%;
+        height: 25px;
+        border-radius: 5px;
+        border: none;
+        background-color: white;
+        font-size: 18px;
+      }
+  
+      .btn-cteate {
+        width: 90%;
+        border-radius: 5px;
+        border-color: lightgreen;
+        background-color: lightgreen;
+        font-size: 24px;
+        font-weight: 500;
+        margin: 5%;
+      }
+    }
+	}
+	
+	&__screen-toDo {
+		.form-field {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+	
+			.head {
+				width: 25%;
+				position: absolute;
+				top: 14%;
+				left: 55%;
+			
+				.input-search {
+					width: 90%;
+					height: 25px;
+					border: none;
+					border-radius: 5px;
+					background-color: white;
+					font-size: 18px;
+				}
+				
+				.checkbox {
+					display: flex;
+					flex-direction: column;
+					margin: 5%;
+					width: 25%;
+	
+					.form-radio-input{
+						display: flex;
+						flex-direction: column;
+						text-align: left;
+					}
+	
+					.checkbox-button {
+						width: 25%;
+						margin-left: 10%;
+						position: absolute;
+						top: 45%;
+						left: 5%;
+	
+						// .mat-radio-outer-circle {
+						// 	border-style: none !important;
+						// }
+					}
+				}
+			}
+	
+			// .box-new-to-do {
+			// 	width: 20%;
+			// 	margin-left: 10%;
+			// 	position: absolute;
+			// 	top: 45%;
+			// 	left: 0;
+			// }
+			.item {
+				&__delete-icon {
+					float: right;
+					color: red;
+				}
+
+				&--strike {
+					text-decoration: line-through;
+				}
+			}
+
+			.input-add-to-do {
+				width: 23%;
+				position: absolute;
+				top: 68%;
+				left: 56%;
 				height: 25px;
 				border: none;
 				border-radius: 5px;
 				background-color: white;
 				font-size: 18px;
 			}
-			
-			.checkbox {
-				display: flex;
-				flex-direction: column;
-				margin: 5%;
-				width: 25%;
-
-				.form-radio-input{
-					display: flex;
-					flex-direction: column;
-					text-align: left;
-				}
-
-				.checkbox-button {
-					width: 25%;
-					margin-left: 10%;
-					position: absolute;
-					top: 45%;
-					left: 5%;
-
-					.mat-radio-outer-circle {
-						border-style: none !important;
-					}
-				}
-			}
-		}
-
-		// .box-new-to-do {
-		// 	width: 20%;
-		// 	margin-left: 10%;
-		// 	position: absolute;
-		// 	top: 45%;
-		// 	left: 0;
-		// }
-
-		.input-add-to-do {
-			width: 23%;
-			position: absolute;
-			top: 66%;
-			left: 56%;
-			height: 25px;
-			border: none;
-			border-radius: 5px;
-			background-color: white;
-			font-size: 18px;
 		}
 	}
 }
 
-li {
+.item {
 	width: 90%;
 	list-style-type: none;
 	text-align: left;
-
-	.delete-icon {
-		float: right;
-		color: red;
-	}
-}
+} 

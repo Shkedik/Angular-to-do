@@ -1,25 +1,41 @@
 <div class="main-card">
-    <div class="screens">
-        <div class="main-card-screen-lists">
+    <div class="main-card__screens">
+        <div class="main-card__screen-lists">
             <div class="form-field">
-                <div class="lists">hhh</div>
-                <form>
+                <div class="form-lists">
+                    <ul>
+                        <!-- <a routerLink={index}> -->
+                            <li 
+                                class="item"
+                                *ngFor="let list of listItems; let i=index"
+                                (click)="clickOnElement(i)">
+                                {{list.newList}}
+                                <!-- <span></span> -->
+                            </li>
+                        <!-- </a> -->
+                    </ul>
+                </div>
+                <form (submit)="addNewList($event)"
+                    class="form-create">
                     <input 
-                        matInputd
+                        [(ngModel)]="newList"
                         class="input-list"
+                        name="newList"
                         placeholder="New list..."
                         >
+                    <button class="btn-cteate"
+                        type="submit"
+                        >Create
+                    </button>    
                 </form>
-                <button class="btn-cteate">Create</button>
             </div>
         </div>
 
-        <div class="main-card-screen-toDo">
+        <div class="main-card__screen-toDo">
             <div class="form-field">
                 <div class="head">
                     <form>
                         <input 
-                            matInput
                             class="input-search"
                             placeholder="Search...">
                     </form>
@@ -34,7 +50,6 @@
                                     color="primary"/>
                                 All
                             </label>
-                            <!-- <br> -->
                             <label>
                                 <input 
                                     type="radio"
@@ -46,19 +61,20 @@
                         </form>
                     </div>
                 </div>
-                <!-- <div [hidden]="newToDo" class="box-new-to-do"></div> -->
                 <ul>
-                    <li *ngFor="let toDo of toDos; let i=index" (click)="executeToDO(i)">{{ toDo.newToDo }}
-                        <!-- <span (click)="executeToDO(i)"></span> -->
-                        <span (click)="delToDo(i)" class="delete-icon">X</span>
+                    <li 
+                        class="item"
+                        *ngFor="let toDo of toDos; let i=index" 
+                        (click)="executeToDO(i)"
+                        [ngClass]="{'item--strike': toDo.completed}" >
+                        {{ toDo.newToDo }}
+                        <span (click)="delToDo(i)" class="item__delete-icon">X</span>
                     </li>
                 </ul>
                 <div>
                     <form (submit)="addToDo($event)">
                         <input 
-                            matInput
                             [(ngModel)]="newToDo"
-                            (keyup.enter)="newToDo=''"
                             name="newToDo"
                             placeholder="New todo"
                             class="input-add-to-do">
