@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-to-do',
@@ -8,6 +10,7 @@ import { Component } from '@angular/core';
 export class ToDoComponent {
 
   item = 0;
+  valueSelect: string;
 
   arrToDo: any;
   newToDo: string;
@@ -18,7 +21,7 @@ export class ToDoComponent {
   listItems: any;
   arrList: any;
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.newToDo = '';
     this.toDos = [{newToDo: 'Milk', completed: false},
                   {newToDo: 'Juice', completed: true},
@@ -31,7 +34,7 @@ export class ToDoComponent {
   }
   addNewList(event) {
     console.log('click')
-    if(this.newList !== '') {
+    if (this.newList !== '') {
       this.arrList = {
         newList: this.newList,
       }
@@ -43,7 +46,7 @@ export class ToDoComponent {
   }
 
   addToDo(event) {
-    if(this.newToDo !== '') {
+    if (this.newToDo !== '') {
       this.arrToDo = {
         newToDo: this.newToDo,
         completed: false
@@ -64,6 +67,8 @@ export class ToDoComponent {
 
   clickOnElement(value) {
     this.item = value;
+    this.router.navigateByUrl(`/${value}`);
     console.log('click', value)
   }
+
 }

@@ -36,6 +36,8 @@
                 <div class="head">
                     <form>
                         <input 
+                            (keyup)="searchTodo($event)"
+                            id="search"
                             class="input-search"
                             placeholder="Search...">
                     </form>

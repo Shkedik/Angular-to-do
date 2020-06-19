@@ -22,6 +22,7 @@
 		height: 70%;
 		font-size: 20px;
 		margin : 5%;
+		border-radius: 5%;
 		background-color: lightsteelblue;
 	}
 
@@ -43,9 +44,10 @@
       height: 100%;
       
       .form-lists {
-        width: 90%;
-        // height: 80%;
-				// margin-bottom: 95%; 
+				width: 90%;
+				position: absolute;
+				top: 10%;
+				left: 20%;
       }
 			
 			.form-create {
