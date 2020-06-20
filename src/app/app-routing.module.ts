@@ -6,6 +6,11 @@ import { ToDoComponent } from './to-do/to-do/to-do.component';
 const routes: Routes = [{
   path: 'to-do',
   component: ToDoComponent
+},
+{
+  path: "",
+  redirectTo: "/to-do",
+  pathMatch: "full",
 }];
 
 @NgModule({

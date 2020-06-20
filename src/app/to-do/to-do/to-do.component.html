@@ -8,8 +8,8 @@
                             <li 
                                 class="item"
                                 *ngFor="let list of listItems; let i=index"
-                                (click)="clickOnElement(i)">
-                                {{list.newList}}
+                                (click)="clickOnElement(list.toDoId)">
+                                {{list.nameToDoList}}
                                 <!-- <span></span> -->
                             </li>
                         <!-- </a> -->
@@ -20,7 +20,7 @@
                     <input 
                         [(ngModel)]="newList"
                         class="input-list"
-                        name="newList"
+                        name="nameToDoList"
                         placeholder="New list..."
                         >
                     <button class="btn-cteate"
@@ -66,18 +66,18 @@
                 <ul>
                     <li 
                         class="item"
-                        *ngFor="let toDo of toDos; let i=index" 
+                        *ngFor="let toDo of currentToDo; let i=index" 
                         (click)="executeToDO(i)"
                         [ngClass]="{'item--strike': toDo.completed}" >
-                        {{ toDo.newToDo }}
+                        {{ toDo.nameTodo }}
                         <span (click)="delToDo(i)" class="item__delete-icon">X</span>
                     </li>
                 </ul>
                 <div>
                     <form (submit)="addToDo($event)">
                         <input 
-                            [(ngModel)]="newToDo"
-                            name="newToDo"
+                            [(ngModel)]="nameTodo"
+                            name="nameTodo"
                             placeholder="New todo"
                             class="input-add-to-do">
                     </form>
