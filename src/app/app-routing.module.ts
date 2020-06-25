@@ -4,13 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ToDoComponent } from './to-do/to-do/to-do.component';
 
 const routes: Routes = [{
-  path: 'to-do',
+  path: '',
   component: ToDoComponent
 },
 {
-  path: "",
-  redirectTo: "/to-do",
-  pathMatch: "full",
+  path: ":id",
+  component: ToDoComponent,
 }];
 
 @NgModule({

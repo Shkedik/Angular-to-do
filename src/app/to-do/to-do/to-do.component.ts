@@ -37,7 +37,7 @@ export class ToDoComponent {
     ];
     this.newList = '';
     this.listItems = [
-      {nameToDoList: 'Shop', toDoId: 'to-do-1'},
+      {nameToDoList: 'Shop', toDoId: 'to-do-1', todos: []},
       {nameToDoList: 'Home Work', toDoId: 'to-do-2'},
       {nameToDoList: 'Work', toDoId: 'to-do-3'},
     ];
