@@ -27,13 +27,13 @@ export class ToDoComponent {
   constructor(private router: Router) { 
     this.nameTodo = '';
     this.toDos = [
-      {nameTodo: 'Milk', completed: false, toDoId: 'to-do-1'},
-      {nameTodo: 'Juice', completed: true, toDoId: 'to-do-1'},
-      {nameTodo: 'Bread', completed: false, toDoId: 'to-do-1'},
-      {nameTodo: 'Bread', completed: false, toDoId: 'to-do-2'},
-      {nameTodo: 'Bread', completed: false, toDoId: 'to-do-3'},
-      {nameTodo: 'Bread', completed: true, toDoId: 'to-do-2'},
-      {nameTodo: 'Milk', completed: true, toDoId: 'to-do-3'},
+      {nameTodo: 'Milk', completed: false, toDoId: 'to-do-1', id: '0'},
+      {nameTodo: 'Juice', completed: true, toDoId: 'to-do-1', id: '1'},
+      {nameTodo: 'Bread', completed: false, toDoId: 'to-do-1', id: '2'},
+      {nameTodo: 'second', completed: false, toDoId: 'to-do-2', id: '3'},
+      {nameTodo: '3', completed: false, toDoId: 'to-do-3', id: '4'},
+      {nameTodo: 'second', completed: true, toDoId: 'to-do-2', id: '5'},
+      {nameTodo: '3', completed: true, toDoId: 'to-do-3', id: '6'},
     ];
     this.newList = '';
     this.listItems = [
@@ -51,13 +51,13 @@ export class ToDoComponent {
     if (this.newList !== '') {
       this.arrList = {
         nameToDoList: this.newList,
-        toDoId: `to-do-${this.listItems.length}`
+        toDoId: `to-do-${this.listItems.length + 1}`,
+        id: Date.now()
       }
       this.listItems.push(this.arrList);
       this.newList = '';
       // event.preventDefault();
     }
-    console.log('newList', this.newList)
   }
 
   addToDo(event) {
@@ -65,8 +65,11 @@ export class ToDoComponent {
       this.arrToDo = {
         nameTodo: this.nameTodo,
         completed: false,
-        toDoId: this.activeIdtoDo
+        toDoId: this.activeIdtoDo,
+        id: Date.now(),
         }
+      console.log('todo', this.arrToDo)
+      
       this.toDos.push(this.arrToDo);
       this.nameTodo = '';
       // event.preventDefault();
@@ -74,11 +77,21 @@ export class ToDoComponent {
   }
 
   delToDo(index) {
-    this.toDos.splice(index, 1);
+    if (this.toDos[index].id) {
+      this.toDos.splice(index, 1);  
+    }
   }
 
   executeToDO(index) {
-    this.toDos[index].completed = !this.toDos[index].completed;
+    // if (this.toDos.id) {
+      this.toDos[index].completed = !this.toDos[index].completed;
+      console.log('todo-index', this.toDos[index])
+      console.log('todo', this.toDos)
+    // }
+    // console.log('todo', this.toDos)
+    // console.log('todo', this.toDos[index])
+    // console.log('completed', this.toDos[index].completed)
+    // console.log('id', this.toDos[index].id)
   }
 
   clickOnElement(id) {
@@ -86,6 +99,7 @@ export class ToDoComponent {
     this.currentToDo = this.toDos
       .filter(item => item.toDoId === this.activeIdtoDo);
     console.log('click', id)
+    console.log('list',this.currentToDo)
   }
 
   
@@ -102,7 +116,7 @@ export class ToDoComponent {
           let comparison = value.slice(temp, filterValue.length).toLowerCase();
           if (comparison === filterValue) {
             result.push(temp);
-            console.log('---', result)
+            // console.log('----', result)
             console.log('---', result.push(temp))
           }
         });
