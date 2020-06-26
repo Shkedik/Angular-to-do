@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'to-do';
-
-  constructor(private http: HttpClient) {
+  toDos: Observable<any[]>;
+  constructor(private firestore: AngularFirestore) {
+    this.toDos = firestore.collection('toDos').valueChanges();
   }
 }

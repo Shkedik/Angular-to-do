@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "test-todo-d1bff": {
+      "hosting": {
+        "to-do": [
+          "test-todo-d1bff"
+        ]
+      }
+    }
+  }
+}

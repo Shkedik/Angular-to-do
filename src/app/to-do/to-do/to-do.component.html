@@ -32,58 +32,8 @@
         </div>
 
         <div class="main-card__screen-toDo">
-            <app-todos *ngIf="выбран_список" [list]="listItems[индекс_выбранного_списка]"></app-todos>
-            <div class="form-field">
-                <div class="head">
-                    <form>
-                        <input 
-                            (keyup)="searchTodo($event)"
-                            id="search"
-                            class="input-search"
-                            placeholder="Search...">
-                    </form>
-                    <div class="checkbox">
-                        <form class="form-radio-input">
-                            <label>
-                                <input 
-                                    type="radio"
-                                    class="checkbox-button"
-                                    checked="true" 
-                                    class="radio-button" 
-                                    color="primary"/>
-                                All
-                            </label>
-                            <label>
-                                <input 
-                                    type="radio"
-                                    class="checkbox-button"    
-                                    class="radio-button" 
-                                    color="primary"/>
-                                Undone
-                            </label>
-                        </form>
-                    </div>
-                </div>
-                <ul>
-                    <li 
-                        class="item"
-                        *ngFor="let toDo of currentToDo; let i=index" 
-                        (click)="executeToDO(i)"
-                        [ngClass]="{'item--strike': toDo.completed}" >
-                        {{ toDo.nameTodo }}
-                        <span (click)="delToDo(i)" class="item__delete-icon">X</span>
-                    </li>
-                </ul>
-                <div>
-                    <form (submit)="addToDo($event)">
-                        <input 
-                            [(ngModel)]="nameTodo"
-                            name="nameTodo"
-                            placeholder="New todo"
-                            class="input-add-to-do">
-                    </form>
-                </div>
-            </div>
+            <app-list-to-do></app-list-to-do>
+            <!-- *ngIf="выбран_список" [list]="listItems[индекс_выбранного_списка]" -->
         </div>
     </div>
 </div>

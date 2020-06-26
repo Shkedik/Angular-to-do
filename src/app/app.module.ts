@@ -11,11 +11,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
+import { ListToDoComponent } from './to-do/list-to-do/list-to-do.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDoComponent,
+    ListToDoComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,8 +32,11 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatRadioModule,
     FormsModule,
+    AngularFirestoreModule,
+    AngularFireAnalyticsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
