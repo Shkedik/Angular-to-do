@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
 // import { firestore } from 'firebase';
+import { List } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-to-do',
@@ -23,24 +24,28 @@ export class ToDoComponent {
   // array: Observable<any[]>;
   array: any[];
 
-  items: Observable<any[]>;
+  items: Observable<List[]>;
 
   constructor(private router: Router, public db: AngularFireDatabase, path: AngularFirestore) { 
     this.newList = '';
     // this.items = '';
 
-    this.items = path.collection('items').valueChanges();
+    // this.items = path.collection('items').valueChanges();
 
-    // db.list('items').valueChanges().subscribe(items => {
-    //       console.log(items);
-    //     });
-    // console.log(this.items)
+    db.list('items').valueChanges().subscribe(items => {
+          console.log(items);
+        });
+    console.log(this.items)
   }
 
   addNewList(event) {
     console.log('click')
     if (this.newList !== '') {
-      this.db.list('items').push({ value: this.newList});
+      this.db.list('items').push({ 
+        nameList: this.newList,
+        id: Date.now(),
+        completed: false,
+      });
       this.newList = '';
     }
 
