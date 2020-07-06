@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
+// import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-to-do',
@@ -10,32 +14,47 @@ import { Router } from '@angular/router';
 export class ToDoComponent {
 
   item = 0;
+  nameToDoList: string;
 
   newList: string;
-  listItems: any;
+  // listItems: any;
   arrList: any;
 
-  constructor(private router: Router) { 
+  // array: Observable<any[]>;
+  array: any[];
+
+  items: Observable<any[]>;
+
+  constructor(private router: Router, public db: AngularFireDatabase, path: AngularFirestore) { 
     this.newList = '';
-    this.listItems = [
-      {nameToDoList: 'Shop', toDoId: 'to-do-1', todos: []},
-      {nameToDoList: 'Home Work', toDoId: 'to-do-2'},
-      {nameToDoList: 'Work', toDoId: 'to-do-3'},
-    ];
+    // this.items = '';
+
+    this.items = path.collection('items').valueChanges();
+
+    // db.list('items').valueChanges().subscribe(items => {
+    //       console.log(items);
+    //     });
+    // console.log(this.items)
   }
 
   addNewList(event) {
     console.log('click')
     if (this.newList !== '') {
-      this.arrList = {
-        nameToDoList: this.newList,
-        toDoId: `to-do-${this.listItems.length + 1}`,
-        id: Date.now()
-      }
-      this.listItems.push(this.arrList);
+      this.db.list('items').push({ value: this.newList});
       this.newList = '';
-      // event.preventDefault();
     }
+
+
+    // if (this.newList !== '') {
+    //   this.arrList = {
+    //     nameToDoList: this.newList,
+    //     // toDoId: `to-do-${this.listItems.length + 1}`,
+    //     id: Date.now()
+    //   }
+    //   // this.listItems.push(this.arrList);
+    //   this.newList = '';
+    //   // event.preventDefault();
+    // }
   }
 
   

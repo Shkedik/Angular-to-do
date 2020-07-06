@@ -14,8 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ListToDoComponent } from './to-do/list-to-do/list-to-do.component';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -32,8 +31,7 @@ import { environment } from '../environments/environment';
     MatInputModule,
     MatRadioModule,
     FormsModule,
-    AngularFirestoreModule,
-    AngularFireAnalyticsModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],

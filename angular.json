@@ -131,6 +131,6 @@
   },
   "defaultProject": "to-do",
   "cli": {
-    "analytics": "6b4dd763-8f3f-410b-82a2-5814451cfead"
+    "analytics": false
   }
 }

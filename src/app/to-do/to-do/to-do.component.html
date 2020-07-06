@@ -7,9 +7,9 @@
                         <!-- <a routerLink={index}> -->
                             <li 
                                 class="item"
-                                *ngFor="let list of listItems; let i=index"
-                                (click)="clickOnElement(list.toDoId)">
-                                {{list.nameToDoList}}
+                                *ngFor="let item of items">
+                                <!-- (click)="clickOnElement(list.toDoId)" -->
+                                {{item.name}}
                                 <!-- <span></span> -->
                             </li>
                         <!-- </a> -->

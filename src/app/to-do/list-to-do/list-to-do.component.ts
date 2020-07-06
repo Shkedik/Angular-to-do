@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-list-to-do',
@@ -16,7 +19,9 @@ export class ListToDoComponent {
   activeIdtoDo: string;
   currentToDo: any;
 
-  constructor() { 
+  items: any;
+
+  constructor(firestore: AngularFirestore) { 
     this.nameTodo = '';
     this.toDos = [
       {nameTodo: 'Milk', completed: false, toDoId: 'to-do-1', id: '0'},
@@ -30,6 +35,14 @@ export class ListToDoComponent {
     // this.activeIdtoDo = this.listItems[0].toDoId;
     this.currentToDo = this.toDos
       .filter(item => item.toDoId === this.activeIdtoDo);
+    
+    // this.items = 
+    firestore.collection('items').valueChanges()
+    .subscribe(items => {
+        this.items = items;
+        // console.log(this.items);
+      });
+    // console.log('---', this.items)
   }
 
   addToDo(event) {

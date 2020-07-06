@@ -31,13 +31,14 @@
 				</div>
 		</div>
 		<ul>
+			<!-- (click)="executeToDO(i)" -->
+			<!-- [ngClass]="{'item--strike': toDo.completed}" -->
 				<li 
 						class="item"
-						*ngFor="let toDo of toDos | async; let i=index" 
-						(click)="executeToDO(i)"
-						[ngClass]="{'item--strike': toDo.completed}" >
-						{{ toDo.nameTodo }}
-						<span (click)="delToDo(i)" class="item__delete-icon">X</span>
+						*ngFor="let item of items">
+						{{ item.name }}
+						<span  class="item__delete-icon">X</span>
+						<!-- (click)="delToDo(i)" -->
 				</li>
 		</ul>
 		<div>
