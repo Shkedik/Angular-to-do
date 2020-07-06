@@ -5,7 +5,7 @@ export interface List {
 }
 
 export interface ItemsTodo {
-	id: number,
+	id: string,
 	nameTodo: string,
 	completed: boolean,
 }

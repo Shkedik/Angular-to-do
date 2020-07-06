@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireDatabase } from '@angular/fire/database';
-// import { firestore } from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
+// import { AngularFireDatabase } from '@angular/fire/database';
 import { List } from '../../interfaces/interfaces';
 
 @Component({
@@ -14,39 +12,43 @@ import { List } from '../../interfaces/interfaces';
 })
 export class ToDoComponent {
 
-  item = 0;
-  nameToDoList: string;
-
   newList: string;
-  // listItems: any;
-  arrList: any;
 
-  // array: Observable<any[]>;
-  array: any[];
+  lists: Observable<List[]>;
+  private listsCollection: AngularFirestoreCollection<List>;
 
-  items: Observable<List[]>;
-
-  constructor(private router: Router, public db: AngularFireDatabase, path: AngularFirestore) { 
-    this.newList = '';
-    // this.items = '';
-
-    // this.items = path.collection('items').valueChanges();
-
-    db.list('items').valueChanges().subscribe(items => {
-          console.log(items);
-        });
-    console.log(this.items)
+  constructor(private router: Router, private afs: AngularFirestore) { 
+    this.listsCollection = afs.collection<List>('items');
+    this.lists = this.listsCollection.valueChanges();
+    // this.newList = '';
+    // // this.items = '';
+    // // this.items = path.collection('items').valueChanges();
+    // db.list('items').valueChanges().subscribe(items => {
+    //   console.log(items);
+    // });
   }
 
   addNewList(event) {
     console.log('click')
     if (this.newList !== '') {
-      this.db.list('items').push({ 
+
+      this.listsCollection.add({ 
         nameList: this.newList,
         id: Date.now(),
         completed: false,
+      }).then(() => {
+        this.newList = '';
       });
-      this.newList = '';
+
+      // const id = this.afs.createId();
+      // const list: List = {
+      //   id: id, 
+      //   nameList: this.newList, 
+      //   completed: false
+      // };
+      // this.listsCollection.doc(id).set(list);
+
+      // this.newList = '';
     }
 
 
@@ -63,11 +65,11 @@ export class ToDoComponent {
   }
 
   
-  clickOnElement(id) {
+  // clickOnElement(id) {
     // this.activeIdtoDo = id;
     // this.currentToDo = this.toDos
       // .filter(item => item.toDoId === this.activeIdtoDo);
     // console.log('click', id)
     // console.log('list',this.currentToDo)
-  }
+  // }
 }
