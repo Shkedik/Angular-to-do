@@ -4,13 +4,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ToDoComponent } from './to-do/to-do/to-do.component';
 
 const routes: Routes = [{
-  path: '',
-  component: ToDoComponent
-},
-{
   path: ":id",
   component: ToDoComponent,
-}];
+  },
+  // {
+  // path: "",
+  // redirectTo: "/:id",
+  // pathMatch: "full"
+// }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

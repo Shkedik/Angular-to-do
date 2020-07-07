@@ -18,10 +18,12 @@
                 <form (submit)="addNewList($event)"
                     class="form-create">
                     <input 
-                        [(ngModel)]="newList"
+                        matInput
+                        [(formControl)]="validateControllNewList"
                         class="input-list"
                         name="nameToDoList"
                         placeholder="New list..."
+                        required
                         >
                     <button class="btn-cteate"
                         type="submit"

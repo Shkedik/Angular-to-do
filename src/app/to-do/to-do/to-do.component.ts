@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
+import { FormControl, Validators } from '@angular/forms';
 // import { AngularFireDatabase } from '@angular/fire/database';
 import { List } from '../../interfaces/interfaces';
 
@@ -12,32 +13,40 @@ import { List } from '../../interfaces/interfaces';
 })
 export class ToDoComponent {
 
-  newList: string;
+  // newList: string;
 
   lists: Observable<List[]>;
   private listsCollection: AngularFirestoreCollection<List>;
 
-  constructor(private router: Router, private afs: AngularFirestore) { 
-    this.listsCollection = afs.collection<List>('items');
-    this.lists = this.listsCollection.valueChanges();
-    // this.newList = '';
-    // // this.items = '';
-    // // this.items = path.collection('items').valueChanges();
-    // db.list('items').valueChanges().subscribe(items => {
-    //   console.log(items);
-    // });
+  constructor(
+    private router: Router, 
+    private afs: AngularFirestore
+  ) { }
+
+  ngOnInit() {
+    this.listsCollection = this.afs.collection<List>('items');
+    // this.lists = this.listsCollection.valueChanges().subscribe();
   }
+
+  validateControllNewList = new FormControl('', [
+    Validators.required,
+  ])
+
+  // getErrorValidateControllNewList() {
+  //   if (this.validateControllNewList.hasError('required')) {
+  //     return 'You must enter a value';
+  //   }
+  // }
 
   addNewList(event) {
     console.log('click')
-    if (this.newList !== '') {
-
+    if (this.validateControllNewList.value !== '') {
       this.listsCollection.add({ 
-        nameList: this.newList,
+        nameList: this.validateControllNewList.value,
         id: Date.now(),
         completed: false,
       }).then(() => {
-        this.newList = '';
+        // this.validateControllNewList = '';
       });
 
       // const id = this.afs.createId();
