@@ -11,19 +11,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-
-import { ToDoComponent } from './to-do/to-do/to-do.component';
-import { ListToDoComponent } from './to-do/list-to-do/list-to-do.component';
+import { CategoryComponent } from './to-do/to-do/category.component';
+import { ItemsToDoComponent } from './to-do/list-to-do/items-to-do.component';
 
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoComponent,
-    ListToDoComponent,
+    CategoryComponent,
+    ItemsToDoComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +31,6 @@ import { environment } from '../environments/environment';
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],

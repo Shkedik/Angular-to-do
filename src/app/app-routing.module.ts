@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ToDoComponent } from './to-do/to-do/to-do.component';
+import { CategoryComponent } from './to-do/to-do/category.component';
 
 const routes: Routes = [{
   path: ":id",
-  component: ToDoComponent,
+  component: CategoryComponent,
   },
   // {
   // path: "",
