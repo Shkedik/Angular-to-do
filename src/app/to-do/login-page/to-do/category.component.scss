@@ -26,15 +26,6 @@
 		background-color: lightsteelblue;
 	}
 
-  &__screen-lists,
-  &__screen-toDo {
-    width: 25%;
-    height: 70%;
-    font-size: 20px;
-    margin : 5%;
-    background-color: lightsteelblue;
-  }
-
   &__screen-lists {
 		.form-field {
       display: flex;

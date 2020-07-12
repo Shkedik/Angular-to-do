@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CategoryComponent } from './to-do/to-do/category.component';
+import { CategoryComponent } from './to-do/login-page/to-do/category.component';
+import { LoginPageComponent } from './to-do/login-page/login-page.component';
 
 const routes: Routes = [{
-  path: ":id",
-  component: CategoryComponent,
-  },
+path:"login",
+component: LoginPageComponent,
+},
+  // path: ":id",
+  // component: CategoryComponent,
+  
   // {
   // path: "",
   // redirectTo: "/:id",

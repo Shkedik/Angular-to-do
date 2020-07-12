@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
-import { List } from '../../interfaces/interfaces';
+import { List } from '../../../interfaces/interfaces';
 
 @Component({
   selector: 'app-to-do',
@@ -56,3 +56,38 @@ export class CategoryComponent {
     // console.log('list',this.currentToDo)
   // }
 }
+
+
+
+// <div class="main-card__screen-lists">
+//         <div class="form-field">
+//             <div class="form-lists">
+//                 <ul>
+//                     <!-- <a routerLink={index}> -->
+//                         <li 
+//                             class="item"
+//                             *ngFor="let list of lists">
+//                             <!-- (click)="clickOnElement(list.toDoId)" -->
+//                             {{list.nameList}}
+//                             <!-- <span></span> -->
+//                         </li>
+//                     <!-- </a> -->
+//                 </ul>
+//             </div>
+//             <form (submit)="addNewList($event)"
+//                 class="form-create">
+//                 <input 
+//                     matInput
+//                     [(formControl)]="validateControllNewList"
+//                     class="input-list"
+//                     name="nameToDoList"
+//                     placeholder="New list..."
+//                     required
+//                     >
+//                 <button class="btn-cteate"
+//                     type="submit"
+//                     >Create
+//                 </button>    
+//             </form>
+//         </div>
+//     </div>

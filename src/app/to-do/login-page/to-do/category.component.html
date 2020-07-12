@@ -1,0 +1,39 @@
+<mat-card class="example-card">
+    <div class="main-card__screen-lists">
+        <div class="form-field">
+            <div class="form-lists">
+                <ul>
+                    <!-- <a routerLink={index}> -->
+                        <li 
+                            class="item"
+                            *ngFor="let list of lists">
+                            <!-- (click)="clickOnElement(list.toDoId)" -->
+                            {{list.nameList}}
+                            <!-- <span></span> -->
+                        </li>
+                    <!-- </a> -->
+                </ul>
+            </div>
+            <form (submit)="addNewList($event)"
+                class="form-create">
+                <input 
+                    matInput
+                    [(formControl)]="validateControllNewList"
+                    class="input-list"
+                    name="nameToDoList"
+                    placeholder="New list..."
+                    required
+                    >
+                <button class="btn-cteate"
+                    type="submit"
+                    >Create
+                </button>    
+            </form>
+        </div>
+    </div>
+
+    <div class="main-card__screen-toDo">
+        <app-items-to-do></app-items-to-do>
+        <!-- *ngIf="выбран_список" [list]="listItems[индекс_выбранного_списка]" -->
+    </div>
+</mat-card>

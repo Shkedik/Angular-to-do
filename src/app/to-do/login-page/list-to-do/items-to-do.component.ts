@@ -92,3 +92,59 @@ export class ItemsToDoComponent {
   }
 
 }
+
+
+// <div class="main-card__screen-toDo">
+// 	<div class="form-field">
+// 		<div class="head">
+// 				<form>
+// 						<input 
+// 								(keyup)="searchTodo($event)"
+// 								id="search"
+// 								class="input-search"
+// 								placeholder="Search...">
+// 				</form>
+// 				<div class="checkbox">
+// 						<form class="form-radio-input">
+// 								<label>
+// 										<input 
+// 												type="radio"
+// 												class="checkbox-button"
+// 												checked="true" 
+// 												class="radio-button" 
+// 												color="primary"/>
+// 										All
+// 								</label>
+// 								<label>
+// 										<input 
+// 												type="radio"
+// 												class="checkbox-button"    
+// 												class="radio-button" 
+// 												color="primary"/>
+// 										Undone
+// 								</label>
+// 						</form>
+// 				</div>
+// 		</div>
+// 		<ul>
+// 			<!-- (click)="executeToDO(i)" -->
+// 			<!-- [ngClass]="{'item--strike': toDo.completed}" -->
+// 				<li 
+// 						class="item"
+// 						*ngFor="let item of items">
+// 						{{ item.name }}
+// 						<span  class="item__delete-icon">X</span>
+// 						<!-- (click)="delToDo(i)" -->
+// 				</li>
+// 		</ul>
+// 		<div>
+// 				<form (submit)="addToDo($event)">
+// 						<input 
+// 								[(ngModel)]="nameTodo"
+// 								name="nameTodo"
+// 								placeholder="New todo"
+// 								class="input-add-to-do">
+// 				</form>
+// 		</div>
+// 	</div>
+// </div>
