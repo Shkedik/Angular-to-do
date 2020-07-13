@@ -1,4 +1,4 @@
-export interface List {
+export interface Categoty {
 	id: number,
 	nameList: string,
 	completed: boolean,

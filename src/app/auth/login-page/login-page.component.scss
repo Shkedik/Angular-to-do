@@ -8,13 +8,14 @@
 	overflow: auto;
 	text-align: center;
 	font-size: 20px;
-	background-color: linen;
 
 	.conteiner-card-login {
 		border: none;
 		border-radius: 10px;
 		box-shadow: 0px 0px 15px 3px rgba(51, 49, 45, 0.97);
-		padding: 15px;
+		padding: 30px;
+		background: radial-gradient(40% 50% at 0 0, #FAECD5, #CAE4D8);
+
 
 		.header{
 			

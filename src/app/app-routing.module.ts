@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CategoryComponent } from './to-do/login-page/to-do/category.component';
-import { LoginPageComponent } from './to-do/login-page/login-page.component';
+// import { CategoryComponent } from './to-do/login-page/to-do/category.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
 
 const routes: Routes = [{
-path:"login",
-component: LoginPageComponent,
+  path:"api/auth/login",
+  component: LoginPageComponent,
 },
-  // path: ":id",
-  // component: CategoryComponent,
-  
-  // {
-  // path: "",
-  // redirectTo: "/:id",
-  // pathMatch: "full"
+// {
+//   path: "category/:id",
+//   component: CategoryComponent
 // }
+  
+  {
+  path: "",
+  redirectTo: "/api/auth/login",
+  pathMatch: "full"
+  }
 ];
 
 @NgModule({

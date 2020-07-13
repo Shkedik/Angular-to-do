@@ -14,12 +14,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-import { CategoryComponent } from './to-do/login-page/to-do/category.component';
-import { ItemsToDoComponent } from './to-do/login-page/list-to-do/items-to-do.component';
+import { CategoryComponent } from './to-do/category/category.component';
+import { ItemsToDoComponent } from './to-do/items-to-do/items-to-do.component';
 
 // import { environment } from '../environments/environment';
-import { LoginPageComponent } from './to-do/login-page/login-page.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpService } from './core/http.auth';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

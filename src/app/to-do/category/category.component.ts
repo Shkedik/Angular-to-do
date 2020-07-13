@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
-import { List } from '../../../interfaces/interfaces';
+import { Categoty } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-to-do',
@@ -13,7 +13,7 @@ export class CategoryComponent {
 
   // newList: string;
 
-  lists: Observable<List[]>;
+  lists: Observable<Categoty[]>;
 
   constructor(
     private router: Router, 
