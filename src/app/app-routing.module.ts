@@ -3,11 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 
 // import { CategoryComponent } from './to-do/login-page/to-do/category.component';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { RegisterPageComponent } from './auth/registe-page/register-page.component';
+import { CategoryComponent } from './to-do/category/category.component';
 
 const routes: Routes = [{
-  path:"api/auth/login",
+  path: "api/auth/login",
   component: LoginPageComponent,
-},
+  },
+  {
+    path: "api/auth/register",
+    component: RegisterPageComponent,
+  },
+  {
+    path: "category",
+    component:CategoryComponent,
+  },
 // {
 //   path: "category/:id",
 //   component: CategoryComponent

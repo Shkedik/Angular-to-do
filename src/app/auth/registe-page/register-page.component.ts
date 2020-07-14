@@ -4,20 +4,21 @@ import { Router } from '@angular/router';
 import { HttpService } from '../../core/auth/http.auth.service';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-register-page',
+  templateUrl: './register-page.component.html',
+  styleUrls: ['./register-page.component.scss']
 })
-export class LoginPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit {
 
   blocked:boolean;
-
+  
   constructor( private httpService: HttpService,
     private router: Router ) {
      }
+  
   ngOnInit(): void {
 
-    }
+  }
 
   dataFormGroupControl = new FormGroup({
     email: new FormControl('', [
@@ -29,18 +30,32 @@ export class LoginPageComponent implements OnInit {
       Validators.required,
       Validators.minLength(6), 
       //pattern
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
     ])
+  }, {
+    // validator: matchingPasswords👀
   });
+
+  // matchassword(c: AbstractControl): {[key: string]: any} {
+  //   let cmp = this.dataFormGroupControl.get('confirmPassword');
+  //   let pass = this.dataFormGroupControl.get('password');
+  //   if (pass.value !== cmp.value) {
+  //     return {mismatchedPassword: true};
+  //   }
+  //   else null;
+  // }
 
   email = this.dataFormGroupControl.get('email');
   password = this.dataFormGroupControl.get('password');
-
+  confirmPassword = this.dataFormGroupControl.get('confirmPassword');
 
   getErrorMessageEmail = () => {} 
 
   getErrorMessagePassword = () => {}
 
-  loginUser = () => {
+  addUser = () => {
     if (!this.blocked) {
       this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
         if(res.password === this.password.value) {
@@ -57,8 +72,8 @@ export class LoginPageComponent implements OnInit {
     //   }
     // })
 
-
-  sendToRegister = () => {
-    this.router.navigateByUrl('/api/auth/register');
+  returnLogin = () => {
+    this.router.navigateByUrl('/api/auth/login');
   }
 }
+

@@ -20,7 +20,8 @@ import { ItemsToDoComponent } from './to-do/items-to-do/items-to-do.component';
 // import { environment } from '../environments/environment';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpService } from './core/http.auth';
+import { HttpService } from './core/auth/http.auth.service';
+import { RegisterPageComponent } from './auth/registe-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpService } from './core/http.auth';
     CategoryComponent,
     ItemsToDoComponent,
     LoginPageComponent,
+    RegisterPageComponent,
   ],
   imports: [
     BrowserModule,
