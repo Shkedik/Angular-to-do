@@ -43,10 +43,9 @@ export class LoginPageComponent implements OnInit {
   loginUser = () => {
     if (!this.blocked) {
       this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
-        if(res.password === this.password.value) {
-          // localStorage.setItem('this.email.value', )
-          this.router.navigateByUrl('/category');
-        }
+        localStorage.setItem('encodedJwt', res.encodedJwt);
+        localStorage.setItem('expiredDate', res.expiredDate);
+        this.router.navigate(['/category']);      
       });
     }
   }

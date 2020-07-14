@@ -13,12 +13,12 @@ export class HttpService {
             email: email,
             password: password
         }
-         return this.http.post("http://localhost:64701/api/auth/login", body)
-        
+         return this.http.post("http://localhost:64701/api/auth/login", body)    
     }
-            // .subscribe((resp: any) => {
-            //     this.router
 
+    loggedIn() {
+        return !!localStorage.getItem('token');
+    }
 
     // public getUser(email: string):  Observable<any> {
     //     return this.http.get(`https://localhost:44306/api/auth/login/${email}`);

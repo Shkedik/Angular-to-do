@@ -17,11 +17,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CategoryComponent } from './to-do/category/category.component';
 import { ItemsToDoComponent } from './to-do/items-to-do/items-to-do.component';
 
-// import { environment } from '../environments/environment';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpService } from './core/auth/http.auth.service';
 import { RegisterPageComponent } from './auth/registe-page/register-page.component';
+import { AboutGuard } from './interfaces/all.guards';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,9 @@ import { RegisterPageComponent } from './auth/registe-page/register-page.compone
     MatFormFieldModule,
     MatButtonModule,
   ],
-  providers: [HttpService],
+  providers: [
+    HttpService,
+    AboutGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

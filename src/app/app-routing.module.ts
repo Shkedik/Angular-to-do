@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/registe-page/register-page.component';
 import { CategoryComponent } from './to-do/category/category.component';
+import { AboutGuard } from './interfaces/all.guards';
 
 const routes: Routes = [{
   path: "api/auth/login",
@@ -17,12 +18,8 @@ const routes: Routes = [{
   {
     path: "category",
     component:CategoryComponent,
-  },
-// {
-//   path: "category/:id",
-//   component: CategoryComponent
-// }
-  
+    canActivate: [AboutGuard],
+  }, 
   {
   path: "",
   redirectTo: "/api/auth/login",
