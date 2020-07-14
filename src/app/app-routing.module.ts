@@ -8,11 +8,11 @@ import { CategoryComponent } from './to-do/category/category.component';
 import { AboutGuard } from './interfaces/all.guards';
 
 const routes: Routes = [{
-  path: "api/auth/login",
+  path: "auth/login",
   component: LoginPageComponent,
   },
   {
-    path: "api/auth/register",
+    path: "auth/register",
     component: RegisterPageComponent,
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [{
   }, 
   {
   path: "",
-  redirectTo: "/api/auth/login",
+  redirectTo: "/auth/login",
   pathMatch: "full"
   }
 ];
@@ -32,3 +32,4 @@ const routes: Routes = [{
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+// export const routingComponents = [LoginPageComponent, RegisterPageComponent];

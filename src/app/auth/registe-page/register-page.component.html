@@ -10,7 +10,8 @@
 			&& dataFormGroupControl.controls['email'].touched">{{getErrorMessageEmail()}}</mat-error> -->
 		</mat-form-field>
 		<br>
-		<mat-form-field class="password" [formGroup]="dataFormGroupControl">
+		<mat-form-field class="password" 
+			[formGroup]="dataFormGroupControl">
 			<mat-label>Enter your password</mat-label>
 			<input matInput
 				formControlName="password"
@@ -19,7 +20,8 @@
 			&& dataFormGroupControl.controls['password'].touched">{{getErrorMessagePassword()}}</mat-error> -->
 		</mat-form-field>
 		<br>
-		<mat-form-field class="confirm-password" [formGroup]="dataFormGroupControl">
+		<mat-form-field class="confirm-password" 
+			[formGroup]="dataFormGroupControl">
 			<mat-label>Confirm your password</mat-label>
 			<input matInput
 				formControlName="confirmPassword"

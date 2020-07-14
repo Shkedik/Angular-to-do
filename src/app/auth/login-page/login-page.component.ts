@@ -58,6 +58,6 @@ export class LoginPageComponent implements OnInit {
 
 
   sendToRegister = () => {
-    this.router.navigateByUrl('/api/auth/register');
+    this.router.navigateByUrl('/auth/register');
   }
 }

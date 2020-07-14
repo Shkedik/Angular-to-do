@@ -13,7 +13,7 @@ export class AboutGuard implements CanActivate {
     if (this.postUser.loggedIn()) {
       return true
     } else {
-      this.router.navigate(['/api/auth/login']);
+      this.router.navigate(['/auth/login']);
       return false
     }
   }

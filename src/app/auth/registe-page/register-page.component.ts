@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../core/auth/http.auth.service';
+import { ValidateEqualModule } from 'ng-validate-equal';
 
 @Component({
   selector: 'app-register-page',
@@ -20,6 +21,10 @@ export class RegisterPageComponent implements OnInit {
 
   }
 
+  // passwordMatch = (control: FormGroup) => {
+  //   return this.password === this.confirmPassword ? null : { notSame: true};
+  // }
+
   dataFormGroupControl = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -34,18 +39,7 @@ export class RegisterPageComponent implements OnInit {
     confirmPassword: new FormControl('', [
       Validators.required,
     ])
-  }, {
-    // validator: matchingPasswords👀
   });
-
-  // matchassword(c: AbstractControl): {[key: string]: any} {
-  //   let cmp = this.dataFormGroupControl.get('confirmPassword');
-  //   let pass = this.dataFormGroupControl.get('password');
-  //   if (pass.value !== cmp.value) {
-  //     return {mismatchedPassword: true};
-  //   }
-  //   else null;
-  // }
 
   email = this.dataFormGroupControl.get('email');
   password = this.dataFormGroupControl.get('password');
@@ -74,7 +68,7 @@ export class RegisterPageComponent implements OnInit {
     // })
 
   returnLogin = () => {
-    this.router.navigateByUrl('/api/auth/login');
+    this.router.navigateByUrl('/auth/login');
   }
 }
 
