@@ -1,64 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from '../../core/auth/http.auth.service';
-import { ValidateEqualModule } from 'ng-validate-equal';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
-  selector: 'app-register-page',
+  selector: 'auth-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss']
 })
 export class RegisterPageComponent implements OnInit {
-
-  blocked:boolean;
   
-  constructor( private httpService: HttpService,
+  constructor( private httpService: AuthService,
     private router: Router ) {
+      
      }
   
   ngOnInit(): void {
 
   }
+  confirmPasswordValidator(fGroup: FormControl) {
+    const password = fGroup.get('password').value;
+    const confirmPassword = fGroup.get('confirmPassword').value;
 
-  // passwordMatch = (control: FormGroup) => {
-  //   return this.password === this.confirmPassword ? null : { notSame: true};
+    if (password !== confirmPassword) {
+      fGroup.get('confirmPassword').setErrors( {mismatch: true} )
+    } else {
+      return null
+    }
+
+    // return fGroup.get('password').value === fGroup.get('confirmPassword').value
+    //   ? null : {mismatch: true}; 
   // }
+  }
 
   dataFormGroupControl = new FormGroup({
     email: new FormControl('', [
-      Validators.required,
       Validators.minLength(4), 
       Validators.email
     ]),
     password: new FormControl('', [
-      Validators.required,
       Validators.minLength(6), 
       //pattern
     ]),
     confirmPassword: new FormControl('', [
-      Validators.required,
+      // Validators.required,
     ])
-  });
-
-  email = this.dataFormGroupControl.get('email');
-  password = this.dataFormGroupControl.get('password');
-  confirmPassword = this.dataFormGroupControl.get('confirmPassword');
-
-  getErrorMessageEmail = () => {} 
-
-  getErrorMessagePassword = () => {}
+  },{
+      validators: this.confirmPasswordValidator
+    }
+  ); 
 
   addUser = () => {
-    if (!this.blocked) {
-      this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
-        if(res.password === this.password.value) {
-          localStorage.setItem('encodedJwt', res.encodedJwt);
-          localStorage.setItem('expiredDate', res.expiredDate);
-          this.router.navigateByUrl('/category');
-        }
-      });
-    }
+    var value = this.dataFormGroupControl.getRawValue();
+
+    this.httpService.postUserRegister(value.email, value.password, value.confirmPassword).subscribe(res => {
+      localStorage.setItem('encodedJwt', res.encodedJwt);
+      localStorage.setItem('expiredDate', res.expiredDate);
+      this.router.navigateByUrl('/category');
+    });
   }
     // this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
     //   if (res.email) {
@@ -66,9 +65,5 @@ export class RegisterPageComponent implements OnInit {
     //     this.router.navigateByUrl('/category/:id');
     //   }
     // })
-
-  returnLogin = () => {
-    this.router.navigateByUrl('/auth/login');
-  }
 }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-items-to-do',
+  selector: 'todo-items-to-do',
   templateUrl: './items-to-do.component.html',
   styleUrls: ['./items-to-do.component.scss']
 })

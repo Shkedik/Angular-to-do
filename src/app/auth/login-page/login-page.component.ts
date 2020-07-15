@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from '../../core/auth/http.auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'auth-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
@@ -12,7 +12,7 @@ export class LoginPageComponent implements OnInit {
 
   blocked:boolean;
 
-  constructor( private httpService: HttpService,
+  constructor( private httpService: AuthService,
     private router: Router ) {
      }
   ngOnInit(): void {
@@ -32,22 +32,14 @@ export class LoginPageComponent implements OnInit {
     ])
   });
 
-  email = this.dataFormGroupControl.get('email');
-  password = this.dataFormGroupControl.get('password');
-
-
-  getErrorMessageEmail = () => {} 
-
-  getErrorMessagePassword = () => {}
-
   loginUser = () => {
-    if (!this.blocked) {
-      this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
-        localStorage.setItem('encodedJwt', res.encodedJwt);
-        localStorage.setItem('expiredDate', res.expiredDate);
-        this.router.navigate(['/category']);      
-      });
-    }
+    var value = this.dataFormGroupControl.getRawValue();
+
+    this.httpService.postUserLogin(value.email, value.password).subscribe(res => {
+      localStorage.setItem('encodedJwt', res.encodedJwt);
+      localStorage.setItem('expiredDate', res.expiredDate);
+      this.router.navigate(['/category']);      
+    });
   }
     // this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
     //   if (res.email) {
@@ -56,8 +48,4 @@ export class LoginPageComponent implements OnInit {
     //   }
     // })
 
-
-  sendToRegister = () => {
-    this.router.navigateByUrl('/auth/register');
-  }
 }

@@ -5,7 +5,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Categoty } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-to-do',
+  selector: 'todo-to-do',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
