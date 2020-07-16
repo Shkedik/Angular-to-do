@@ -28,6 +28,9 @@ export class AuthService {
         return !!localStorage.getItem('encodedJwt');
     }
 
+    getToken() {
+        return localStorage.getItem('encodedJwt');
+    }
     // public getUser(email: string):  Observable<any> {
     //     return this.http.get(`https://localhost:64701/api/auth/login/${email}`);
     // }

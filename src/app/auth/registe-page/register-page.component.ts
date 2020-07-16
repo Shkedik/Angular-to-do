@@ -27,10 +27,6 @@ export class RegisterPageComponent implements OnInit {
     } else {
       return null
     }
-
-    // return fGroup.get('password').value === fGroup.get('confirmPassword').value
-    //   ? null : {mismatch: true}; 
-  // }
   }
 
   dataFormGroupControl = new FormGroup({
@@ -42,9 +38,7 @@ export class RegisterPageComponent implements OnInit {
       Validators.minLength(6), 
       //pattern
     ]),
-    confirmPassword: new FormControl('', [
-      // Validators.required,
-    ])
+    confirmPassword: new FormControl('', [])
   },{
       validators: this.confirmPasswordValidator
     }

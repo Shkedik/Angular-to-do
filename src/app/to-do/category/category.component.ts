@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
 import { Categoty } from '../../interfaces/interfaces';
+import { getMaxListeners } from 'process';
 
 @Component({
   selector: 'todo-to-do',
@@ -35,6 +36,10 @@ export class CategoryComponent {
 
   addNewList(event) {
     console.log('click')
+
+    // addEventListener().subscribe(() => getList())
+
+    // addItem
     // if (this.newList !== '') {
     //   this.arrList = {
     //     nameToDoList: this.newList,
