@@ -2,7 +2,7 @@
     <div class="category">
         <div class="form-lists">
             <ul>
-                <a routerLink={index}>
+                <!-- <a routerLink={index}> -->
                     <li 
                         class="item"
                         *ngFor="let list of lists">
@@ -10,7 +10,7 @@
                         {{list.nameList}}
 
                     </li>
-                 </a> 
+                 <!-- </a>  -->
             </ul>
         </div>
         <form (submit)="addNewList($event)"

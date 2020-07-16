@@ -5,18 +5,18 @@ import { CategoryComponent } from './to-do/category/category.component';
 import { AuthGuard } from './core/guards/auth.guards';
 
 const routes: Routes = [{
-  path: "auth",
-  loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    path: "auth",
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: "category",
-    component:CategoryComponent,
-    canActivate: [AuthGuard],
+    path: "item",
+    loadChildren: () => import('./to-do/todo.module').then(m => m.TodoModule)
+    // canActivate: [AuthGuard],
   }, 
   {
-  path: "**",
-  redirectTo: "/auth/login",
-  pathMatch: "full"
+    path: "**",
+    redirectTo: "/auth/login",
+    pathMatch: "full"
   }
 ];
 

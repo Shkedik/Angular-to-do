@@ -5,14 +5,13 @@ import { CategoryComponent } from './category/category.component';
 import { ItemsToDoComponent } from './items-to-do/items-to-do.component';
 
 const routes: Routes = [{
-    path: "category",
+    path: "add",
     component: CategoryComponent
   },
   {
-    path: "categoryId",
+    path: "id",
     component: ItemsToDoComponent
   },
-
   {
     path: '**',
     redirectTo: '/login',

@@ -15,9 +15,7 @@ export class LoginPageComponent implements OnInit {
   constructor( private httpService: AuthService,
     private router: Router ) {
      }
-  ngOnInit(): void {
-
-    }
+  ngOnInit(): void { }
 
   dataFormGroupControl = new FormGroup({
     email: new FormControl('', [
@@ -33,19 +31,13 @@ export class LoginPageComponent implements OnInit {
   });
 
   loginUser = () => {
+    console.log('click')
     var value = this.dataFormGroupControl.getRawValue();
 
     this.httpService.postUserLogin(value.email, value.password).subscribe(res => {
       localStorage.setItem('encodedJwt', res.encodedJwt);
       localStorage.setItem('expiredDate', res.expiredDate);
-      this.router.navigate(['/category']);      
+      this.router.navigate(['/item/add']);      
     });
   }
-    // this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
-    //   if (res.email) {
-    //     localStorage.setItem('userName', res.display_name);
-    //     this.router.navigateByUrl('/category/:id');
-    //   }
-    // })
-
 }

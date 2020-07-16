@@ -53,11 +53,5 @@ export class RegisterPageComponent implements OnInit {
       this.router.navigateByUrl('/category');
     });
   }
-    // this.httpService.postUser(this.email.value, this.password.value).subscribe(res => {
-    //   if (res.email) {
-    //     localStorage.setItem('userName', res.display_name);
-    //     this.router.navigateByUrl('/category/:id');
-    //   }
-    // })
 }
 

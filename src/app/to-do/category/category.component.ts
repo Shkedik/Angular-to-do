@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
 import { Categoty } from '../../interfaces/interfaces';
-import { getMaxListeners } from 'process';
+import { ItemService } from 'src/app/core/item.service';
 
 @Component({
   selector: 'todo-to-do',
@@ -12,87 +12,40 @@ import { getMaxListeners } from 'process';
 })
 export class CategoryComponent {
 
-  // newList: string;
+  newList: string;
 
   lists: Observable<Categoty[]>;
 
   constructor(
     private router: Router, 
+    private httpService: ItemService
   ) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   validateControllNewList = new FormControl('', [
     Validators.required,
   ])
 
-  // getErrorValidateControllNewList() {
-  //   if (this.validateControllNewList.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-  // }
-
   addNewList(event) {
+    console.log('newlist', this.newList)
     console.log('click')
 
     // addEventListener().subscribe(() => getList())
 
     // addItem
-    // if (this.newList !== '') {
+    if (this.newList !== '') {
+       this.httpService.addItem({
+        nameToDoList: this.newList
+       }).subscribe((x) => x);
+       
     //   this.arrList = {
     //     nameToDoList: this.newList,
-    //     // toDoId: `to-do-${this.listItems.length + 1}`,
     //     id: Date.now()
     //   }
     //   // this.listItems.push(this.arrList);
     //   this.newList = '';
     //   // event.preventDefault();
-    // }
+    }
   }
-
-  
-  // clickOnElement(id) {
-    // this.activeIdtoDo = id;
-    // this.currentToDo = this.toDos
-      // .filter(item => item.toDoId === this.activeIdtoDo);
-    // console.log('click', id)
-    // console.log('list',this.currentToDo)
-  // }
 }
-
-
-
-// <div class="main-card__screen-lists">
-//         <div class="form-field">
-//             <div class="form-lists">
-//                 <ul>
-//                     <!-- <a routerLink={index}> -->
-//                         <li 
-//                             class="item"
-//                             *ngFor="let list of lists">
-//                             <!-- (click)="clickOnElement(list.toDoId)" -->
-//                             {{list.nameList}}
-//                             <!-- <span></span> -->
-//                         </li>
-//                     <!-- </a> -->
-//                 </ul>
-//             </div>
-//             <form (submit)="addNewList($event)"
-//                 class="form-create">
-//                 <input 
-//                     matInput
-//                     [(formControl)]="validateControllNewList"
-//                     class="input-list"
-//                     name="nameToDoList"
-//                     placeholder="New list..."
-//                     required
-//                     >
-//                 <button class="btn-cteate"
-//                     type="submit"
-//                     >Create
-//                 </button>    
-//             </form>
-//         </div>
-//     </div>
